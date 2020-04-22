@@ -34,7 +34,11 @@ text = pyperclip.paste()    # Returns the string text that is currently on the c
 extractedPhone = phoneRegex.findall(text)
 extractedEmail = emailRegex.findall(text)
 
-print(extractedPhone)
-print(extractedEmail)
+allPhoneNumbers = []     # Creates and empty list
+for phoneNumber in extractedPhone:
+  allPhoneNumbers.append(phoneNumber[0])    # Finds all the values at [0] in the extractedPhone variable and adds that value to the allPhoneNumbers list
 
- 
+# Copy the extracted email/phone to the clipboard
+
+results = ','.join(allPhoneNumbers) + ',' + '\n' +'\n'.join(extractedEmail)
+pyperclip.copy(results)
